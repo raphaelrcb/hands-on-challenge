@@ -3,7 +3,14 @@ import RegisterBox from "components/Register/Register";
 
 const PagesRegisterUser = () => {
     return (
-        <RegisterBox />
+        <div
+          style = {{
+              maxWidth: 800,
+              margin: '30px auto',
+          }}>
+            <RegisterBox />
+        </div>
+        
     );
 };
 
