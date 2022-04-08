@@ -28,9 +28,57 @@ class RegisterBox extends React.Component {
         });
     }
 
-    handleSubmit(){
-        console.log(this.state)
+    handleSubmit(event){
+        event.preventDefault();
+        const isValid = this.validate();
+        if (isValid) {
+            console.log(this.state)
+            this.setState(initialState);
+        }
     }    
+
+    validate() {
+
+        let usernameError = "";
+        let passwordError = "";
+        let confirmError = "";  
+
+        var alphaNumeric = /^[a-zA-Z]+$/;
+
+
+        let specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+        // const numberChars = 0123456789;
+
+        if(!this.state.username){
+            usernameError = "This field is required"
+        }
+        else if(!this.state.password){
+            passwordError = "This field is required"
+        }
+        else if(!this.state.confirm){
+            confirmError = "This field is required"
+        }
+
+        if (this.state.password.length < 8){
+            passwordError = "Password must contain at least 8 characters"
+        }
+        else if (!specialChars.test(this.state.password)){
+            passwordError = "Password must contain at least one special character"
+        }
+        else if (!/\d/.test(this.state.password) || !/[a-zA-Z]/.test(this.state.password)){
+            passwordError = "Password must contain at least one number and one letter"
+        }
+
+        if(this.state.password != this.state.confirm){
+            confirmError = "Password does not match"
+        }
+
+        if(usernameError || passwordError || confirmError){
+            this.setState({usernameError, passwordError, confirmError});
+            return false;
+        }
+        return true;
+    }
 
     render () {
         return (
