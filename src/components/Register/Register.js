@@ -1,18 +1,22 @@
 import React from 'react';
 import UseState from 'react';
 
+const initialState = {
+    username: '',
+    password: '',
+    confirm: '',
+
+    usernameError: '',
+    passwordError: '',
+    confirmError: '',    
+}
+
 class RegisterBox extends React.Component {
 
     constructor(props){
         super(props);
 
-        this.state = {
-            
-            username: '',
-            password: '',
-            confirm: ''
-        
-        }
+        this.state = initialState
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
