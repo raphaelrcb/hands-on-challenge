@@ -1,6 +1,7 @@
 import React from 'react';
 import UseState from 'react';
 import loginImg from "../../logo.jpg";
+import './Register.css'
 
 const initialState = {
     username: '',
