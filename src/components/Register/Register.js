@@ -99,6 +99,7 @@ class RegisterBox extends React.Component {
                                 value={this.state.username}
                                 onChange={this.handleChange}/>
                         </div>
+                        <div className='register-error-msg'>{this.state.usernameError}</div>
 
                         <div className='input-group'>
                             <label htmlFor='password'>Password</label>
@@ -110,6 +111,7 @@ class RegisterBox extends React.Component {
                                 value={this.state.password}
                                 onChange={this.handleChange}/>
                         </div>
+                        <div className='register-error-msg'>{this.state.passwordError}</div>
 
                         <div className='input-group'>
                             <label htmlFor='password'>Confirm Password</label>
@@ -121,6 +123,7 @@ class RegisterBox extends React.Component {
                                 value={this.state.confirm}
                                 onChange={this.handleChange}/>
                         </div>
+                        <div className='register-error-msg'>{this.state.confirmError}</div>
 
                         <button
                             type='button'
