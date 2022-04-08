@@ -1,5 +1,6 @@
 import React from 'react';
 import UseState from 'react';
+import loginImg from "../../logo.jpg";
 
 const initialState = {
     username: '',
@@ -85,7 +86,10 @@ class RegisterBox extends React.Component {
             <div>
                 <div className='inner-container'>
                     <div className='register-header'>
-                        <h1>Register</h1>
+                        Register
+                    </div>
+                    <div className='register-image'>
+                        <img src= {loginImg} />
                     </div>
                     <div className='register-box'>
 
