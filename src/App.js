@@ -1,10 +1,12 @@
 import logo from './logo.svg';
+import RegisterBox from 'components/Register/Register';
 import './App.css';
+
 
 function App() {
   return (
     <div className="App">
-      Hello World
+      <RegisterBox />
     </div>
   );
 }
