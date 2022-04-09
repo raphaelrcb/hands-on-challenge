@@ -24,6 +24,7 @@ class RegisterBox extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+    
 
     handleChange(event) {
         this.setState({
@@ -46,11 +47,7 @@ class RegisterBox extends React.Component {
         let passwordError = "";
         let confirmError = "";  
 
-        var alphaNumeric = /^[a-zA-Z]+$/;
-
-
         let specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-        // const numberChars = 0123456789;
 
         if(!this.state.username){
             usernameError = "This field is required"
@@ -72,7 +69,7 @@ class RegisterBox extends React.Component {
             passwordError = "Password must contain at least one number and one letter"
         }
 
-        if(this.state.password != this.state.confirm){
+        if(this.state.password !== this.state.confirm){
             confirmError = "Password does not match"
         }
 
@@ -134,7 +131,7 @@ class RegisterBox extends React.Component {
                         <button
                             type='button'
                             className='register-button'
-                            onClick={this.handleSubmit}> Registrar
+                            onClick={this.handleSubmit}> Register
                         </button>
 
 
