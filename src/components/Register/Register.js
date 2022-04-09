@@ -1,8 +1,8 @@
 import React from 'react';
-import UseState from 'react';
 import { useResolvedPath } from 'react-router-dom';
 import loginImg from "../../logo.jpg";
 import './Register.css'
+import { withRouter } from "./withRouter";
 
 const initialState = {
     username: '',
@@ -35,9 +35,11 @@ class RegisterBox extends React.Component {
     handleSubmit(event){
         event.preventDefault();
         const isValid = this.validate();
+
         if (isValid) {
             console.log(this.state)
             this.setState(initialState);
+            this.props.navigate('/control')
         }
     }    
 
@@ -144,4 +146,4 @@ class RegisterBox extends React.Component {
     
 }
 
-export default RegisterBox;
+export default withRouter(RegisterBox);
