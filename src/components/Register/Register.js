@@ -1,5 +1,4 @@
 import React from 'react';
-import { useResolvedPath } from 'react-router-dom';
 import loginImg from "../../logo.jpg";
 import './Register.css'
 import { withRouter } from "./withRouter";
