@@ -6,12 +6,14 @@ import {
 //   Link
 } from "react-router-dom";
 import PagesRegisterUser from "./Register/RegisterUser"
+import PagesLeadPanel from "./LeadPanel/LeadPanel"
 
 const Root = () => {
     return(
         <Router>
             <Routes>
-                <Route path="/" element={<PagesRegisterUser />} />
+                <Route exact path="/" element={<PagesRegisterUser />} />
+                <Route path="/control" element={<PagesLeadPanel />} />
             </Routes>
         </Router>
     );
