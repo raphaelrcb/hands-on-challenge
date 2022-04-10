@@ -94,10 +94,12 @@ class RegisterBox extends React.Component {
                     <div className='register-box'>
 
                         <div className='input-group'>
-                            <label htmlFor='username'>Username</label>
+                            <label htmlFor='username'>Username*</label>
                             <input
+                                required
                                 type = 'text'
                                 name = 'username'
+                                id = 'username'
                                 className='register-input'
                                 placeholder='Username' 
                                 value={this.state.username}
@@ -106,9 +108,11 @@ class RegisterBox extends React.Component {
                         <div className='register-error-msg'>{this.state.usernameError}</div>
 
                         <div className='input-group'>
-                            <label htmlFor='password'>Password</label>
+                            <label htmlFor='password'>Password*</label>
                             <input
+                                required
                                 type = 'password'
+                                id = 'password'
                                 name = 'password'
                                 className='register-input'
                                 placeholder='********'
@@ -118,10 +122,12 @@ class RegisterBox extends React.Component {
                         <div className='register-error-msg'>{this.state.passwordError}</div>
 
                         <div className='input-group'>
-                            <label htmlFor='password'>Confirm Password</label>
+                            <label htmlFor='password'>Confirm Password*</label>
                             <input
+                                required
                                 type = 'password'
                                 name = 'confirm'
+                                id = 'confirm'
                                 className='register-input'
                                 placeholder='********'
                                 value={this.state.confirm}
@@ -130,7 +136,7 @@ class RegisterBox extends React.Component {
                         <div className='register-error-msg'>{this.state.confirmError}</div>
 
                         <button
-                            type='button'
+                            type='submit'
                             className='register-button'
                             onClick={this.handleSubmit}> Register
                         </button>
