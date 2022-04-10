@@ -15,7 +15,6 @@ const initialError = {
 }
 
 
-
 const LeadsForm = () => {
 
     const [isCheckAll, setIsCheckAll] = useState(false);
@@ -24,6 +23,7 @@ const LeadsForm = () => {
     
     const [error, setError] = useState(initialError)
     const [values, setValues] = useState(initialValue)
+    const [lead, setLead] = useState()
     
     const navigate = useNavigate();
     
@@ -83,14 +83,15 @@ const LeadsForm = () => {
         e.preventDefault();
         var isValid = validate();
         if(isValid){
-            setError(initialError)
-            console.log(values, isCheck, isCheck.length, error)  
+            const services = isCheck.join()
+            const toStorage = {values, services};
+            let error = ""
+            setError({error})
+            localStorage.setItem("new_lead", JSON.stringify(toStorage))
+            // setLead(JSON.parse(localStorage.getItem("new_lead")))
+            // console.log(lead)
             alert("Lead saved succesfully") 
-            // var test = JSON.stringify(values)// JSON.stringify(isCheck.toString())
-            // console.log(test)
-            // localStorage.setItem("lead-name", values.leadName)
-            // localStorage.setItem("info", values)
-            // navigate('/control')  
+            navigate('/control')  
         }
     }
 
