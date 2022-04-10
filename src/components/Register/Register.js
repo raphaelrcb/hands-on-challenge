@@ -89,7 +89,7 @@ class RegisterBox extends React.Component {
                         Register
                     </div>
                     <div className='register-image'>
-                        <img src= {loginImg} />
+                        <img src= {loginImg} alt="Elogroup logo" />
                     </div>
                     <div className='register-box'>
 
