@@ -2,12 +2,16 @@ import React, { useState, useEffect } from "react";
 import logoImg from "logo.jpg"
 import Checkbox from "./Checkbox";
 import { CheckList } from "./CheckList";
+import {useNavigate} from 'react-router-dom'
 import "./LeadsForm.css"
 
 const initialValue = {
-    name: '',
-    phone: '',
-    email: ''
+    leadName: '',
+    leadPhone: '',
+    leadEmail: '',
+}
+const initialError = {
+    error: ''
 }
 
 
