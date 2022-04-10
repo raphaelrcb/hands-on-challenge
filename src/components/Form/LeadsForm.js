@@ -86,8 +86,10 @@ const LeadsForm = () => {
             const services = isCheck.join()
             const toStorage = {values, services};
             let error = ""
+            var key = "lead_"+ (localStorage.length)
+            console.log(key)
             setError({error})
-            localStorage.setItem("new_lead", JSON.stringify(toStorage))
+            localStorage.setItem(key, JSON.stringify(toStorage))
             // setLead(JSON.parse(localStorage.getItem("new_lead")))
             // console.log(lead)
             alert("Lead saved succesfully") 
