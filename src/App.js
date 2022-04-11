@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import RegisterBox from 'components/Register/Register';
 import './App.css';
 
