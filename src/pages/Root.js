@@ -1,4 +1,7 @@
 import React from "react";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+
 import UIContainer from "components/UI/Container/Container";
 import {
   BrowserRouter as Router,
@@ -12,13 +15,15 @@ import PagesLeadsForm from "./LeadsForm/PagesLeadsForm";
 
 const Root = () => {
     return(
-        <Router>
-            <Routes>
-                <Route exact path="/" element={<PagesRegisterUser />} />
-                <Route path="/control" element={<PagesLeadsPanel />} />
-                <Route path="/newlead" element={<PagesLeadsForm />} />
-            </Routes>
-        </Router>
+        <DndProvider backend={HTML5Backend}>
+            <Router>
+                <Routes>
+                    <Route exact path="/" element={<PagesRegisterUser />} />
+                    <Route path="/control" element={<PagesLeadsPanel />} />
+                    <Route path="/newlead" element={<PagesLeadsForm />} />
+                </Routes>
+            </Router>
+        </ DndProvider>
     );
 };
 
