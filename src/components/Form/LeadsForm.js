@@ -89,14 +89,10 @@ const LeadsForm = () => {
             var key = "lead_"+ (localStorage.length)
             const services = isCheck.join()
             leads.service = services
-            // const toStorage = {leads};
             const toStorage = [{name: leads.leadName, 
                                 service: leads.service}]
-
             let error = ""
-            // console.log(key)
             setError({error})
-            // localStorage.setItem(key, values.leadName)
             localStorage.setItem(key, JSON.stringify(toStorage))
             // setLead(JSON.parse(localStorage.getItem("new_lead")))
             // console.log(lead)

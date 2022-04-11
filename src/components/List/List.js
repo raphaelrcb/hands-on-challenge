@@ -15,5 +15,3 @@ export default function List( { data } ){
         </div>
     );
 };
-
-// export default List;   

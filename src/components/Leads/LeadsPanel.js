@@ -6,13 +6,6 @@ import "./LeadsPanel.css"
 
 const LeadsPanel = () => {
     
-    // const [newLead, setNewLead] = useState([])
-    // function getNewLead () {
-    //     setNewLead(JSON.parse(localStorage.getItem("new_lead")))
-    //     return newLead
-    // }
-
-
     return(
         <div>
             <div className='header-box'>
@@ -30,7 +23,6 @@ const LeadsPanel = () => {
         </div>
         
     )
-
 }
 
 export default LeadsPanel;
