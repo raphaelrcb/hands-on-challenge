@@ -90,7 +90,8 @@ const LeadsForm = () => {
             const services = isCheck.join()
             leads.service = services
             const toStorage = [{name: leads.leadName, 
-                                service: leads.service}]
+                                service: leads.service,
+                                status: leads.leadStatus}]
             let error = ""
             setError({error})
             localStorage.setItem(key, JSON.stringify(toStorage))
