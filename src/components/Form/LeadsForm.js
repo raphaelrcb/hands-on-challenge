@@ -101,7 +101,9 @@ const LeadsForm = () => {
             // setLead(JSON.parse(localStorage.getItem("new_lead")))
             // console.log(lead)
             alert("Lead saved succesfully") 
-            navigate('/control')  
+            navigate('/control')
+            window.location.reload(false);
+
         }
     }
 
