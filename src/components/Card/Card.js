@@ -1,10 +1,14 @@
 import React from "react";
 import "./Card.css"
 
-const Card = () => {
+const Card = ({data}) => {
     
     return (
-        <div>
+        <div className="card-box">
+            <header>
+                {/* <label>{data.values.leadName}</label> */}
+            </header>
+            <p>{data.name}</p>
         </div>
     );
 };
