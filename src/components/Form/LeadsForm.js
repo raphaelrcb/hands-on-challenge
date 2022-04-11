@@ -6,9 +6,12 @@ import {useNavigate} from 'react-router-dom'
 import "./LeadsForm.css"
 
 const initialValue = {
+    id: '',
     leadName: '',
     leadPhone: '',
     leadEmail: '',
+    leadStatus: 'Cliente em Potencial',
+    service: ''
 }
 const initialError = {
     error: ''
@@ -22,8 +25,8 @@ const LeadsForm = () => {
     const [list, setList] = useState([]);
     
     const [error, setError] = useState(initialError)
-    const [values, setValues] = useState(initialValue)
-    const [lead, setLead] = useState()
+    const [leads, setLeads] = useState(initialValue)
+    const [service, setService] = useState()
     
     const navigate = useNavigate();
     
@@ -76,19 +79,24 @@ const LeadsForm = () => {
     function onChange(e) {
         //escrevendo algo no formulário, atualizar os valores dos estados
         const { name , value } = e.target;
-        setValues({ ...values, [name]: value});
+        setLeads({ ...leads, [name]: value});
     }
 
     function onSubmit(e) {
         e.preventDefault();
         var isValid = validate();
         if(isValid){
-            const services = isCheck.join()
-            const toStorage = {values, services};
-            let error = ""
             var key = "lead_"+ (localStorage.length)
-            console.log(key)
+            const services = isCheck.join()
+            leads.service = services
+            // const toStorage = {leads};
+            const toStorage = [{name: leads.leadName, 
+                                service: leads.service}]
+
+            let error = ""
+            // console.log(key)
             setError({error})
+            // localStorage.setItem(key, values.leadName)
             localStorage.setItem(key, JSON.stringify(toStorage))
             // setLead(JSON.parse(localStorage.getItem("new_lead")))
             // console.log(lead)
