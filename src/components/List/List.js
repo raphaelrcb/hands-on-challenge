@@ -1,10 +1,27 @@
 import React from "react";
 import Card from "components/Card/Card";
+import { useDrop } from "react-dnd";
+
 import "./List.css"
 
 export default function List( { data } ){
+
+    const [, dropRef] = useDrop({
+        accept: 'CARD',
+        hover(item, monitor){
+            if(item.status === 'Cliente em Potencial' && data.title === 'Cliente em Potencial'){
+                return;
+            }
+            else if (item.status === 'Dados Confirmados' && (data.title === 'Cliente em Potencial' || data.title === 'Dados Confirmados')){
+                return;
+            }
+            else if (item.status === 'Reunião Agendada') {return;}
+            console.log(item.status, data.title);
+        }
+    }) 
+
     return (
-        <div className="list-box">
+        <div className="list-box" ref={dropRef}>
             <header>
                 <h2>{data.title}</h2>
             </header>
