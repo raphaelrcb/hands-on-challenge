@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import logoImg from "../../logo.jpg";
 import { Link } from 'react-router-dom';
+import Board from 'components/Board/Boards';
 import "./LeadsPanel.css"
 
 const LeadsPanel = () => {
@@ -23,7 +24,7 @@ const LeadsPanel = () => {
             </div>
             <main>
                 <div>
-                    Drag and Drop Here
+                    <Board />
                 </div>
             </main>
         </div>
