@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import List from "components/List/List";
 import "./Board.css"
 
@@ -20,12 +20,12 @@ function loadLists() {
      return [
         {title: 'Cliente em Potencial', lead: cards.flat() },
         {title: 'Dados Confirmados', lead: ''}, 
-        {title: 'Reunião agendada', lead: ''}
+        {title: 'Reunião Agendada', lead: ''}
     ];
 } 
 
 const lists = loadLists(); 
-export default function Board({}) {
+export default function Board() {
 
     return (
         <div className="board-box">
