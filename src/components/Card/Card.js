@@ -18,9 +18,9 @@ export default function Card ({data, index, listIndex}) {
         <div>
             <div className="card-box"  ref={dragRef}>
                 <header>
-                    {/* <label>{data.values.leadName}</label> */}
+                    <label>{data.name}</label>
                 </header>
-                <p>{data.name}</p>
+                <p>{data.email}, {data.phone}</p>
             </div>
         </div>
     );

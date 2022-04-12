@@ -98,7 +98,10 @@ const LeadsForm = () => {
             const services = isCheck.join()
             leads.service = services
             const toStorage = [{name: leads.leadName, 
-                                status: leads.leadStatus}]
+                                status: leads.leadStatus,
+                                email: leads.leadEmail,
+                                phone: leads.leadPhone,
+                                services: leads.service}]
             let error = ""
             setError({error})
             localStorage.setItem("new_"+ keys.length, JSON.stringify(toStorage))

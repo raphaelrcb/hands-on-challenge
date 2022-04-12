@@ -52,7 +52,6 @@ export default function List( { data, index: listIndex } ){
                  index={index}
                  listIndex={listIndex}
                  data={card} />) : "" }
-                {/* {data.lead? <Card />:""} */}
             </ul>
         </div>
     );
