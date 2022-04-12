@@ -84,8 +84,6 @@ const LeadsForm = () => {
         var isValid = validate();//antes de submeter, faz a validação
         if(isValid){
             var keys = Object.keys(localStorage)
-            var i = 0
-            var count_key = 0;
 
             const services = isCheck.join()
             leads.service = services
