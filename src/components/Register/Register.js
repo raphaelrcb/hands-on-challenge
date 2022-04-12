@@ -36,7 +36,16 @@ class RegisterBox extends React.Component {
         const isValid = this.validate();
 
         if (isValid) {
-            console.log(this.state)
+            var keys = Object.keys(localStorage)
+            var i = 0
+            var count_key = 0 
+            while (i < keys.length) {//loop para procurar quantos users já existem para poder salvar o próximo
+                if ( keys.indexOf("user_"+i) > -1 ){
+                    count_key++;
+                }
+                i++;
+            }
+            localStorage.setItem("user_"+count_key, JSON.stringify({user: this.state.username, password: this.state.password}))
             this.setState(initialState);
             this.props.navigate('/control')
         }
