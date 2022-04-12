@@ -1,12 +1,7 @@
 .list-box{
     padding: 0 15px;
     height: 100%;
-    /* flex-grow: 0; */
-    /* flex-shrink: 0; */
-    /* flex-basis: 320px; */
-    flex: 0 0 320px;
-    /* border-left: 1px solid rgba(0, 0, 0, 0.05) ; */
- 
+    flex: 0 0 320px; 
 }
 * + .list-box {
     border-left: 2px solid rgba(0, 0, 0, 0.05) ;

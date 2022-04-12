@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Board from 'components/Board/Boards';
 import "./LeadsPanel.css"
 
-const LeadsPanel = () => {
+const LeadsPanel = () => {//Header com um botão para o formulário de leads e chama o board que vai ser onde os cards serão mostrados
     
     return(
         <div>

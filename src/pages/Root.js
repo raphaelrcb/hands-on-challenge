@@ -1,24 +1,27 @@
 import React from "react";
-import UIContainer from "components/UI/Container/Container";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-//   Link
 } from "react-router-dom";
 import PagesRegisterUser from "./Register/RegisterUser"
 import PagesLeadsPanel from "./LeadsPanel/PagesLeadsPanel"
 import PagesLeadsForm from "./LeadsForm/PagesLeadsForm";
 
-const Root = () => {
+const Root = () => { //Componente Raiz, guarda o roteador para navegar enre as páginas
     return(
-        <Router>
-            <Routes>
-                <Route exact path="/" element={<PagesRegisterUser />} />
-                <Route path="/control" element={<PagesLeadsPanel />} />
-                <Route path="/newlead" element={<PagesLeadsForm />} />
-            </Routes>
-        </Router>
+        <DndProvider backend={HTML5Backend}>
+            <Router>
+                <Routes>
+                    <Route exact path="/" element={<PagesRegisterUser />} />
+                    <Route path="/control" element={<PagesLeadsPanel />} />
+                    <Route path="/newlead" element={<PagesLeadsForm />} />
+                </Routes>
+            </Router>
+        </ DndProvider>
     );
 };
 

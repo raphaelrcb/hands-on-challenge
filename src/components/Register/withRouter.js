@@ -9,3 +9,5 @@ export const withRouter = (Component) => {
 
   return Wrapper;
 };
+//Não se podem usar jooks dentro de uma class componet, por isso se utiliza esse Wrapper para ao componente de classe 
+//O Wrapper devolve para a classe os hooks de Navigate de forma que a classe possa utilizá-los 

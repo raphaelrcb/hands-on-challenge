@@ -26,16 +26,15 @@ const LeadsForm = () => {
     
     const [error, setError] = useState(initialError)
     const [leads, setLeads] = useState(initialValue)
-    const [service, setService] = useState()
     
-    const navigate = useNavigate();
+    const navigate = useNavigate();//Hooks para navegação após submit
     
     // lidando com os checkboxes
-    useEffect(() => {
+    useEffect(() => {//define o valor de checklist em list
         setList(CheckList);
       }, [list]);
 
-      const handleSelectAll = e => {
+      const handleSelectAll = e => {//lida com a opção de selecionar ou desselecionar todos os checkbox
         setIsCheckAll(!isCheckAll);
         setIsCheck(list.map(li => li.id));
         if (isCheckAll) {
@@ -43,15 +42,13 @@ const LeadsForm = () => {
         }
       };    
 
-      const handleClick = e => {
+      const handleClick = e => { // marca um checkbox no clique
         const { id, checked } = e.target;
         setIsCheck([...isCheck, id]);
         if (!checked) {
           setIsCheck(isCheck.filter(item => item !== id));
         }
       };
-
-    //   console.log(isCheck);
 
       const checkboxList = list.map(({id, name}) => {
           //função para embutir a lista de checkbox junto dos elementos da tabela, que serão chamados para cada item da lista, gerando uma linha na tabela para cada item na lista
@@ -84,27 +81,31 @@ const LeadsForm = () => {
 
     function onSubmit(e) {
         e.preventDefault();
-        var isValid = validate();
+        var isValid = validate();//antes de submeter, faz a validação
         if(isValid){
-            var key = "lead_"+ (localStorage.length)
+            var keys = Object.keys(localStorage)
+            var i = 0
+            var count_key = 0;
+
             const services = isCheck.join()
             leads.service = services
             const toStorage = [{name: leads.leadName, 
-                                service: leads.service}]
+                                status: leads.leadStatus,
+                                email: leads.leadEmail,
+                                phone: leads.leadPhone,
+                                services: leads.service}]
             let error = ""
             setError({error})
-            localStorage.setItem(key, JSON.stringify(toStorage))
-            // setLead(JSON.parse(localStorage.getItem("new_lead")))
-            // console.log(lead)
+            localStorage.setItem("new_"+ keys.length, JSON.stringify(toStorage))//nova entrada sempre com um número maior para evitar conflitos repetição de nomes
             alert("Lead saved succesfully") 
-            navigate('/control')
-            window.location.reload(false);
+            navigate('/control')//navega de volta
 
         }
     }
 
     function validate() {
-        if(isCheck.length < 1){
+        if(isCheck.length < 1){//vê se pelo menos 1 dos checkboxes está marcado
+                                //validação de outros campos vazios feitos pelo required do prórpio html
             let error = "*a required field is empty*"
             setError({error})
             return false;
@@ -161,17 +162,15 @@ const LeadsForm = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {checkboxList}                                  
+                                {checkboxList}               
                             </tbody>
                         </table>
                     </div>
                     <div className="checkbox-error">{error.error}</div>
-
                     <button
                             type='submit'
                             className='save-button'> SAVE
                     </button>
-
                 </form>
             </div>
         </div>

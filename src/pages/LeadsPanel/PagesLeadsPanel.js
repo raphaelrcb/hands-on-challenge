@@ -1,14 +1,10 @@
 import React from "react";
 import LeadsPanel from "components/Leads/LeadsPanel"
-import UIContainer from "components/UI/Container/Container";
 
-const PagesLeadsPanel = () => {
+const PagesLeadsPanel = () => {//Chama o painel de Leads
     return (
         <div>
-            <UIContainer>
-                <LeadsPanel/>   
-            </UIContainer>
-            
+            <LeadsPanel/>               
         </div>  
     );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import RegisterBox from "components/Register/Register";
 
-const PagesRegisterUser = () => {
+const PagesRegisterUser = () => {//Chama o regitro
     return (
         <div>
             <RegisterBox />
