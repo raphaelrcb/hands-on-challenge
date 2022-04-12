@@ -3,11 +3,11 @@ import React from "react";
 import { useDrag } from "react-dnd";
 import "./Card.css"
 
-export default function Card ({data}) {
+export default function Card ({data, index, listIndex}) {
 
     const [{ isDragging }, dragRef] = useDrag({
         type: 'CARD', 
-        item: {id: data.name, status: data.status},
+        item: {id: data.name, status: data.status, index, listIndex},
         collect: monitor => ({
           isDragging: monitor.isDragging(),
         }),
