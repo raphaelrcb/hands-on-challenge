@@ -51,8 +51,6 @@ const LeadsForm = () => {
         }
       };
 
-    //   console.log(isCheck);
-
       const checkboxList = list.map(({id, name}) => {
           //função para embutir a lista de checkbox junto dos elementos da tabela, que serão chamados para cada item da lista, gerando uma linha na tabela para cada item na lista
           return (
@@ -95,8 +93,6 @@ const LeadsForm = () => {
             let error = ""
             setError({error})
             localStorage.setItem(key, JSON.stringify(toStorage))
-            // setLead(JSON.parse(localStorage.getItem("new_lead")))
-            // console.log(lead)
             alert("Lead saved succesfully") 
             navigate('/control')
             window.location.reload(false);
