@@ -55,21 +55,15 @@ export default function Board() {
                 i++ 
             }
             var newKey = []
-            var temp = []
             if(draft[fromList].lead !== '' && fromList != toList){//se a lista de origem não estiver vazia, remove elemento e se o destino for diferente da origem
                     if (fromList === 0 && toList === 1){
                         newKey = key.replace('new_','confirm_')
                         value = value.replace('Cliente em Potencial', 'Dados Confirmados');
                     } 
-                    else if (fromList === 0 && toList === 2){
-                        newKey = key.replace('new_','done_')
-                        value = value.replace('Cliente em Potencial', 'Reunião Agendada');
-                    } 
                     else if (fromList === 1 && toList === 2){
                         newKey = key.replace('confirm_','done_')
                         value = value.replace('Dados Confirmados', 'Reunião Agendada');
                     }
-                    console.log(temp)
                     localStorage.setItem(newKey, value)
                     if(!key.includes("done")){localStorage.removeItem(key)}
                     draft[fromList].lead.splice(from, 1)

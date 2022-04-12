@@ -17,7 +17,7 @@ export default function List( { data, index: listIndex } ){
             const draggedIndex = item.index;
             const targetListIndex = listIndex;
 
-            if(item.status === 'Cliente em Potencial' && data.title === 'Cliente em Potencial'){
+            if(item.status === 'Cliente em Potencial' && (data.title === 'Cliente em Potencial' || data.title === 'Reunião Agendada') ){
                 return;
             }
             else if (item.status === 'Dados Confirmados' && (data.title === 'Cliente em Potencial' || data.title === 'Dados Confirmados')){
