@@ -1,5 +1,5 @@
 import React from "react";
-
+//elemento com a checkbox que será repetido na tabela
 const Checkbox = ({ id, type, name, handleClick, isChecked }) => {
 
     return (

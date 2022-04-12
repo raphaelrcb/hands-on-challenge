@@ -16,4 +16,4 @@ export const CheckList = [
       name: "BPM"
     }
   ];
-  
+  //lista de checkboxes possíveis

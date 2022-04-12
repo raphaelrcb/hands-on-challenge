@@ -1,7 +1,7 @@
 import React from "react";
 import LeadsPanel from "components/Leads/LeadsPanel"
 
-const PagesLeadsPanel = () => {
+const PagesLeadsPanel = () => {//Chama o painel de Leads
     return (
         <div>
             <LeadsPanel/>               

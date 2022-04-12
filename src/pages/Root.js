@@ -11,7 +11,7 @@ import PagesRegisterUser from "./Register/RegisterUser"
 import PagesLeadsPanel from "./LeadsPanel/PagesLeadsPanel"
 import PagesLeadsForm from "./LeadsForm/PagesLeadsForm";
 
-const Root = () => {
+const Root = () => { //Componente Raiz, guarda o roteador para navegar enre as páginas
     return(
         <DndProvider backend={HTML5Backend}>
             <Router>

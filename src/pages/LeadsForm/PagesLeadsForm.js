@@ -1,15 +1,11 @@
 import React from "react";
-// import { useParams } from "react-router-dom";
 import LeadsForm from "components/Form/LeadsForm"
-// import LeadsPanel from "components/Leads/LeadsPanel"
 
-const PagesLeadsForm = () => {
+const PagesLeadsForm = () => {//Chama o formulário de Leads
 
-    // const  { id } = useParams();
     return (
         <div>
             <LeadsForm/>
-            {/* {id && <div>id: {id}</div>} */}
         </div>  
     );
 };

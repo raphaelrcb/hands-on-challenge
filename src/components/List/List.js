@@ -8,7 +8,7 @@ export default function List( { data, index: listIndex } ){
 
     const {move} = useContext(BoardContext);
     
-    const [, dropRef] = useDrop({
+    const [, dropRef] = useDrop({//função para soltar o card
         accept: 'CARD',
 
         hover(item, monitor){
@@ -16,7 +16,7 @@ export default function List( { data, index: listIndex } ){
             const draggedListIndex = item.listIndex;
             const draggedIndex = item.index;
             const targetListIndex = listIndex;
-
+            //condições de movimento do card
             if(item.status === 'Cliente em Potencial' && (data.title === 'Cliente em Potencial' || data.title === 'Reunião Agendada') ){
                 return;
             }
@@ -26,11 +26,11 @@ export default function List( { data, index: listIndex } ){
             else if (item.status === 'Reunião Agendada') {
                 return;
             }
-            else if (item.status !== 'Reunião Agendada'){
+            else if (item.status !== 'Reunião Agendada'){//chama a função de movimento, passando os índices necessários do card movido e das listas de origem e destino
                 move(draggedListIndex, draggedIndex, targetListIndex)
                 item.listIndex = targetListIndex;
                 item.index = 0;
-                if (targetListIndex === 1){
+                if (targetListIndex === 1){//troca o status do item do card
                     item.status = 'Dados Confirmados'
                 }
                 if (targetListIndex === 2){
@@ -42,6 +42,8 @@ export default function List( { data, index: listIndex } ){
     }) 
 
     return (
+        //O board vai mostrar uma lista de posições para os cards, que são mapeados a partir das leads existentes em DATA
+        //Em seguida uma lista de cards é mapeado na posição em que se encontra no board
         <div className="list-box" ref={dropRef}>
             <header>
                 <h2>{data.title}</h2>

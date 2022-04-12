@@ -4,7 +4,7 @@ import "./Card.css"
 
 export default function Card ({data, index, listIndex}) {
 
-    const [{ isDragging }, dragRef] = useDrag({
+    const [{ isDragging }, dragRef] = useDrag({//define um item arrastável
         type: 'CARD', 
         item: {id: data.name, status: data.status, index, listIndex},
         collect: monitor => ({
@@ -14,6 +14,7 @@ export default function Card ({data, index, listIndex}) {
   
     
     return (
+        //cria o card com as informações recebidas
         <div>
             <div className="card-box"  ref={dragRef}>
                 <header>

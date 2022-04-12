@@ -3,7 +3,7 @@ import loginImg from "../../logo.jpg";
 import './Register.css'
 import { withRouter } from "./withRouter";
 
-const initialState = {
+const initialState = { //inicialzando os estados da aplicação
     username: '',
     password: '',
     confirm: '',
@@ -13,9 +13,9 @@ const initialState = {
     confirmError: '',    
 }
 
-class RegisterBox extends React.Component {
+class RegisterBox extends React.Component { //classe vai ter todo o funcionamento do registro
 
-    constructor(props){
+    constructor(props){//construtor da classe
         super(props);
 
         this.state = initialState
@@ -25,17 +25,17 @@ class RegisterBox extends React.Component {
     }
     
 
-    handleChange(event) {
+    handleChange(event) {//salva o estado da entrada enquanto é alterada
         this.setState({
             [event.target.name]: event.target.value
         });
     }
 
-    handleSubmit(event){
+    handleSubmit(event){//quando se pressiona o botão, deve-se validar se os dados inseridos estão corretos, guardar os dados de login no local storage e navegar para a próxima página
         event.preventDefault();
-        const isValid = this.validate();
+        const isValid = this.validate();//chama o método de validação
 
-        if (isValid) {
+        if (isValid) {//se for válido, cria uma nova chave no local storage e armazena o nome e a senha
             var keys = Object.keys(localStorage)
             var i = 0
             var count_key = 0 
@@ -83,7 +83,7 @@ class RegisterBox extends React.Component {
             confirmError = "Password does not match"
         }
 
-        if(usernameError || passwordError || confirmError){
+        if(usernameError || passwordError || confirmError){//se alguma das condições definiu um erro, retorna false e define os erros com setState
             this.setState({usernameError, passwordError, confirmError});
             return false;
         }
