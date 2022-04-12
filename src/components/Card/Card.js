@@ -1,4 +1,3 @@
-import UIContainer from "components/UI/Container/Container";
 import React from "react";
 import { useDrag } from "react-dnd";
 import "./Card.css"
