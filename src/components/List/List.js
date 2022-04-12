@@ -29,6 +29,7 @@ export default function List( { data, index: listIndex } ){
             else if (item.status !== 'Reunião Agendada'){
                 move(draggedListIndex, draggedIndex, targetListIndex)
                 item.listIndex = targetListIndex;
+                item.index = 0;
                 if (targetListIndex === 1){
                     item.status = 'Dados Confirmados'
                 }
