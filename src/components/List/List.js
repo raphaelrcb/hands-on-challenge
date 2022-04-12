@@ -1,11 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
 import Card from "components/Card/Card";
 import { useDrop } from "react-dnd";
-
+import BoardContext from "components/Board/Context"
 import "./List.css"
 
 export default function List( { data } ){
 
+    const {move} = useContext(BoardContext);
+    
     const [, dropRef] = useDrop({
         accept: 'CARD',
         hover(item, monitor){
@@ -15,8 +17,14 @@ export default function List( { data } ){
             else if (item.status === 'Dados Confirmados' && (data.title === 'Cliente em Potencial' || data.title === 'Dados Confirmados')){
                 return;
             }
-            else if (item.status === 'Reunião Agendada') {return;}
-            console.log(item.status, data.title);
+            else if (item.status === 'Reunião Agendada') {
+                return;
+            }
+            else {
+                move(item.status, data.title)
+            }
+            // console.log(item.status, data.title);
+            
         }
     }) 
 
