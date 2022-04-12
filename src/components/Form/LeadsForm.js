@@ -84,15 +84,24 @@ const LeadsForm = () => {
         e.preventDefault();
         var isValid = validate();
         if(isValid){
-            var key = "lead_"+ (localStorage.length)
+            var keys = Object.keys(localStorage)
+            var i = 0
+            var count_key = 0;
+
+            while (i < keys.length) {//loop para procurar quantos novos leads já existem para poder salvar o próximo
+                if ( keys[i].includes("new_")){
+                    count_key++;
+                }
+                i++;
+            }
+            while (keys.indexOf("new_"+count_key) > -1){count_key++}
             const services = isCheck.join()
             leads.service = services
             const toStorage = [{name: leads.leadName, 
-                                service: leads.service,
                                 status: leads.leadStatus}]
             let error = ""
             setError({error})
-            localStorage.setItem(key, JSON.stringify(toStorage))
+            localStorage.setItem("new_"+ keys.length, JSON.stringify(toStorage))
             alert("Lead saved succesfully") 
             navigate('/control')
             window.location.reload(false);
