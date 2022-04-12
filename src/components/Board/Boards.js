@@ -4,44 +4,72 @@ import BoardContext from "./Context.js"
 import produce from "immer"
 import "./Board.css"
 
-function loadCards(){
-
+function loadCards(prefix){
     var values = []
-    var key = Object.keys(localStorage)
-    var i = 0;
-    while (i < key.length) {    
-        values.push(JSON.parse(localStorage.getItem("lead_"+i)))
+    var keys = Object.keys(localStorage)
+    var i = 0; 
+    var count_key = 0
+    var key_list_2 = []
+
+    while (i < keys.length) {  //conta quantos leads de cada categoria existem
+        if (keys[i].includes(prefix)){
+            key_list_2.push(keys[i])
+        } 
         i++;   
+    }  
+    i = 0;
+    while (i < key_list_2.length){//passa os leads para values que virarão cards
+        values.push(JSON.parse(localStorage.getItem(key_list_2[i])))
+        i++;
     }
     return Object.values(values);  
 }
 
 function loadLists() {
-    const cards = loadCards(); 
+    const newCard = loadCards("new_"); 
+    const confirmCard = loadCards("confirm_");
+    const doneCard = loadCards("done_");
      return [
-        {title: 'Cliente em Potencial', lead: cards.flat() },
-        {title: 'Dados Confirmados', lead: ''}, 
-        {title: 'Reunião Agendada', lead: ''}
+        {title: 'Cliente em Potencial', lead: newCard.flat() },
+        {title: 'Dados Confirmados', lead: confirmCard.flat()}, 
+        {title: 'Reunião Agendada', lead: doneCard.flat()}
     ];
 } 
 
-const listData = loadLists(); 
-export default function Board() {
-    
-    const [lists, setLists] = useState(listData);
-    console.log(lists) 
 
+export default function Board() {
+    const listData = loadLists(); 
+    const [lists, setLists] = useState(listData);
+    
     function move(fromList, from, toList) {
-        setLists(produce(lists, draft => {
+        setLists(produce(loadLists(), draft => {
             const dragged = draft[fromList].lead[from]
-            if(draft[fromList].lead != ''){//se a lista de origem não estiver vazia, remove elemento
-                draft[fromList].lead.splice(from, 1)
+            var value = JSON.stringify(dragged)
+            var keylist = Object.keys(localStorage)
+            var key = [];
+            var i = 0;
+            while (i < keylist.length) {
+                if((localStorage.getItem(keylist[i]).includes(value))){
+                    key = keylist[i]
+                } 
+                i++ 
             }
-            if (draft[toList].lead == ''){//se a lista de destino esvtiver vazia, o elemento é o primeiro e único item do array
-                draft[toList].lead = [dragged]
-            }
-            else {//se a lista do destino não estiver vazia, simplesmete adiciona o elemento na primeira posição
-                draft[toList].lead.splice(0, 0, dragged)
+            var newKey = []
+            
+            if(draft[fromList].lead !== '' && fromList != toList){//se a lista de origem não estiver vazia, remove elemento e se o destino for diferente da origem
+                    if (fromList === 0 && toList === 1){
+                        newKey = key.replace('new_','confirm_')
+                    } 
+                    else if (fromList === 0 && toList === 2){
+                        newKey = key.replace('new_','done_')
+                    } 
+                    else if (fromList === 1 && toList === 2){
+                        newKey = key.replace('confirm_','done_')
+                    }
+                    localStorage.setItem(newKey, value)
+                    if(!key.includes("done")){localStorage.removeItem(key)}
+                    draft[fromList].lead.splice(from, 1)
+                    draft[toList].lead.splice(0, 0, dragged)
             }
         }))
     } 
